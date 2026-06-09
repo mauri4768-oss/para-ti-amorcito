@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Ti, Amor</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Video/Imagen de Fondo -->
+    <div class="background-container">
+        <img id="backgroundImage" src="./assets/background.jpg" alt="Fondo romántico" class="background-media">
+        <div class="overlay"></div>
+    </div>
+
+    <!-- Contenedor Principal -->
+    <div class="container">
+        <!-- Texto Romántico -->
+        <div class="content-wrapper">
+            <h1 class="romantic-text" id="romanticPhrase">
+                <!-- La frase aparecerá aquí -->
+            </h1>
+            
+            <!-- Decoración de corazones -->
+            <div class="hearts-decoration">
+                <span class="heart">♥</span>
+                <span class="heart">♥</span>
+                <span class="heart">♥</span>
+            </div>
+        </div>
+
+        <!-- Música de fondo (opcional) -->
+        <audio id="backgroundMusic" loop>
+            <source src="./assets/romantic-music.mp3" type="audio/mpeg">
+        </audio>
+
+        <!-- Botón de control de música -->
+        <button class="music-toggle" id="musicToggle" title="Activar/Desactivar música">
+            <span class="music-icon">🎵</span>
+        </button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
