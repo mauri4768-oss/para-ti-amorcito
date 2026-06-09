@@ -4,12 +4,300 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para Ti, Amor</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #1a1a1a;
+    --secondary-color: #e91e63;
+    --tertiary-color: #ffffff;
+    --accent-color: #f06292;
+    --light-overlay: rgba(26, 26, 26, 0.5);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+    height: 100vh;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d1b2e 100%);
+}
+
+/* Contenedor de fondo */
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d1b2e 100%);
+}
+
+.background-media {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: zoomIn 8s ease-out;
+    opacity: 0.9;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(1.05);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 0.9;
+    }
+}
+
+/* Overlay oscuro elegante */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--light-overlay);
+    backdrop-filter: blur(3px);
+    z-index: -1;
+}
+
+/* Contenedor principal */
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    position: relative;
+    z-index: 1;
+    flex-direction: column;
+}
+
+/* Wrapper del contenido */
+.content-wrapper {
+    text-align: center;
+    max-width: 90%;
+    animation: fadeInUp 1.2s ease-out;
+    padding: 40px;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Texto romántico */
+.romantic-text {
+    font-size: clamp(1.5rem, 7vw, 3.5rem);
+    color: var(--tertiary-color);
+    font-weight: 300;
+    letter-spacing: 1px;
+    line-height: 1.7;
+    text-shadow: 
+        0 4px 20px rgba(233, 30, 99, 0.6),
+        0 2px 4px rgba(26, 26, 26, 0.9),
+        0 0 40px rgba(233, 30, 99, 0.3);
+    animation: textGlow 3s ease-in-out infinite;
+    margin: 0 auto;
+}
+
+@keyframes textGlow {
+    0%, 100% {
+        text-shadow: 
+            0 4px 20px rgba(233, 30, 99, 0.6),
+            0 2px 4px rgba(26, 26, 26, 0.9);
+    }
+    50% {
+        text-shadow: 
+            0 4px 30px rgba(233, 30, 99, 0.9),
+            0 2px 8px rgba(26, 26, 26, 0.95),
+            0 0 50px rgba(233, 30, 99, 0.5);
+    }
+}
+
+/* Efecto de aparición de letras */
+.romantic-text.letter-animation span {
+    display: inline-block;
+    animation: letterFade 0.5s ease-out backwards;
+}
+
+@keyframes letterFade {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Decoración de corazones */
+.hearts-decoration {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    animation: fadeInUp 1.5s ease-out 0.3s backwards;
+}
+
+.heart {
+    font-size: 2.5rem;
+    color: var(--secondary-color);
+    animation: heartBeat 1.2s ease-in-out infinite;
+    text-shadow: 0 0 20px rgba(233, 30, 99, 0.6);
+}
+
+.heart:nth-child(2) {
+    animation: heartBeat 1.2s ease-in-out infinite 0.2s;
+}
+
+.heart:nth-child(3) {
+    animation: heartBeat 1.2s ease-in-out infinite 0.4s;
+}
+
+@keyframes heartBeat {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+    50% {
+        transform: scale(1.3);
+        opacity: 1;
+    }
+}
+
+/* Botón de música */
+.music-toggle {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid var(--secondary-color);
+    background: rgba(233, 30, 99, 0.2);
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    z-index: 10;
+    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+}
+
+.music-toggle:hover {
+    background: rgba(233, 30, 99, 0.4);
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(233, 30, 99, 0.5);
+}
+
+.music-toggle.active {
+    background: rgba(233, 30, 99, 0.6);
+    box-shadow: 0 0 20px rgba(233, 30, 99, 0.8);
+}
+
+.music-icon {
+    display: inline-block;
+    animation: musicNote 1s ease-in-out infinite;
+}
+
+.music-toggle.active .music-icon {
+    animation: musicNotePlaying 0.6s ease-in-out infinite;
+}
+
+@keyframes musicNote {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes musicNotePlaying {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .romantic-text {
+        font-size: clamp(1.2rem, 5vw, 2.5rem);
+    }
+
+    .hearts-decoration {
+        gap: 15px;
+    }
+
+    .heart {
+        font-size: 1.8rem;
+    }
+
+    .music-toggle {
+        width: 45px;
+        height: 45px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-wrapper {
+        padding: 20px;
+    }
+
+    .romantic-text {
+        font-size: clamp(1rem, 4vw, 1.8rem);
+    }
+
+    .music-toggle {
+        width: 40px;
+        height: 40px;
+        bottom: 15px;
+        right: 15px;
+        font-size: 1rem;
+    }
+}
+
+/* Animación suave de entrada */
+@keyframes smoothEntry {
+    0% {
+        opacity: 0;
+        filter: blur(10px);
+    }
+    100% {
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+body {
+    animation: smoothEntry 0.8s ease-out;
+}
+    </style>
 </head>
 <body>
     <!-- Video/Imagen de Fondo -->
     <div class="background-container">
-        <img id="backgroundImage" src="./assets/background.jpg" alt="Fondo romántico" class="background-media">
+        <img id="backgroundImage" src="./assets/background.jpg" alt="Fondo romántico" class="background-media" onerror="this.style.display='none'">
         <div class="overlay"></div>
     </div>
 
@@ -30,7 +318,7 @@
         </div>
 
         <!-- Música de fondo (opcional) -->
-        <audio id="backgroundMusic" loop>
+        <audio id="backgroundMusic" loop volume="0.3">
             <source src="./assets/romantic-music.mp3" type="audio/mpeg">
         </audio>
 
@@ -40,6 +328,113 @@
         </button>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+// Configuración
+const config = {
+    romantic_phrase: "Te diría que lo más bonito fue haberte conocido, pero en realidad lo más bonito ha sido todo lo que construimos desde entonces",
+    music_enabled: true
+};
+
+// DOM Elements
+const romanticPhraseElement = document.getElementById('romanticPhrase');
+const musicToggle = document.getElementById('musicToggle');
+const backgroundMusic = document.getElementById('backgroundMusic');
+
+/**
+ * Inicializa la página romántica
+ */
+function initializeRomanticPage() {
+    // Obtener la frase de configuración
+    const phrase = config.romantic_phrase || "Te amo más cada día ❤️";
+    
+    // Animar el texto letra por letra
+    animateTextLetter(romanticPhraseElement, phrase);
+    
+    // Inicializar controles de música
+    setupMusicControls();
+    
+    // Auto-play de música si está habilitada
+    if (config.music_enabled) {
+        setTimeout(() => {
+            playMusic();
+        }, 1500);
+    }
+}
+
+/**
+ * Anima el texto letra por letra
+ * @param {Element} element - Elemento donde aparecerá el texto
+ * @param {string} text - Texto a animar
+ */
+function animateTextLetter(element, text) {
+    element.innerHTML = '';
+    element.classList.add('letter-animation');
+    
+    // Dividir el texto en caracteres
+    const letters = text.split('');
+    
+    letters.forEach((letter, index) => {
+        const span = document.createElement('span');
+        span.textContent = letter === ' ' ? '\u00A0' : letter;
+        span.style.animationDelay = `${index * 0.05}s`;
+        element.appendChild(span);
+    });
+}
+
+/**
+ * Configura los controles de música
+ */
+function setupMusicControls() {
+    musicToggle.addEventListener('click', toggleMusic);
+    
+    backgroundMusic.addEventListener('ended', () => {
+        musicToggle.classList.remove('active');
+    });
+}
+
+/**
+ * Toggle de reproducción de música
+ */
+function toggleMusic() {
+    if (backgroundMusic.paused) {
+        playMusic();
+    } else {
+        pauseMusic();
+    }
+}
+
+/**
+ * Reproduce la música
+ */
+function playMusic() {
+    const promise = backgroundMusic.play();
+    if (promise !== undefined) {
+        promise.catch(error => {
+            console.log('No se pudo reproducir la música:', error);
+        });
+    }
+    musicToggle.classList.add('active');
+}
+
+/**
+ * Pausa la música
+ */
+function pauseMusic() {
+    backgroundMusic.pause();
+    musicToggle.classList.remove('active');
+}
+
+// Iniciar cuando el documento esté listo
+document.addEventListener('DOMContentLoaded', initializeRomanticPage);
+
+// Exportar funciones para uso externo
+window.romanticPage = {
+    updatePhrase: (newPhrase) => {
+        config.romantic_phrase = newPhrase;
+        animateTextLetter(romanticPhraseElement, newPhrase);
+    },
+    config: config
+};
+    </script>
 </body>
 </html>
